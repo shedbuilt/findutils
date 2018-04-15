@@ -1,5 +1,5 @@
 NAME=findutils
 VERSION=4.6.0
-REVISION=2
+REVISION=1
 SRC=http://ftp.gnu.org/gnu/findutils/findutils-4.6.0.tar.gz
 SRCMD5=9936aa8009438ce185bea2694a997fc1
