@@ -1,5 +1,9 @@
 #!/bin/bash
 declare -A SHED_PKG_LOCAL_OPTIONS=${SHED_PKG_OPTIONS_ASSOC}
+# Patch for glibc 2.28
+sed -i 's/IO_ftrylockfile/IO_EOF_SEEN/' gl/lib/*.c
+sed -i '/unistd/a #include <sys/sysmacros.h>' gl/lib/mountlist.c
+echo "#define _IO_IN_BACKUP 0x100" >> gl/lib/stdio-impl.h
 # Configure
 if [ -n "${SHED_PKG_LOCAL_OPTIONS[toolchain]}" ]; then
     ./configure --prefix=/tools || exit 1
